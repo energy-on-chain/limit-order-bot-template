@@ -1,9 +1,11 @@
 ###############################################################################
-# PROJECT: CVC Trading Bot Template
+# FILENAME: run.py
+# PROJECT: EOC Limit Order Bot Template
+# CLIENT: 
 # AUTHOR: Matt Hartigan
 # DATE: 25-Feb-2022
 # FILENAME: base.py
-# DESCRIPTION: Base file that defines the interface for CVC trading bots.
+# DESCRIPTION: Base file that defines the interface for EOC trading bots.
 ###############################################################################
 import os
 import time

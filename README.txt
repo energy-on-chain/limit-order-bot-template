@@ -1,14 +1,13 @@
 ###############################################################################
-# PROJECT: CVC Trading Bot Template
+# PROJECT: EOC Limit Order Bot Template
+# CLIENT: 
 # AUTHOR: Matt Hartigan
-# DATE: 25-Feb-2022
+# DATE: 8-Apr-2022
+# FILENAME: README.txt
 ###############################################################################
 
 // OVERVIEW
-This repository is the template for all Chainview Capital trading bots. The idea
-is to copy it every time a new bot is created so thatcommon functions, utilities, 
-etc. can be reused instead of rewritten. From there, each bot can be individually
-customized to implement it's specific strategy.
+
 
 // REPO ARCHITECTURE
 // exchanges/
@@ -41,12 +40,10 @@ order, etc.).
 
 
 ###############################################################################
-# VERSION / CHANGELOG
+# CHANGELOG
 ###############################################################################
 // v0.1.0
 Initial release.
 
 // v0.2.0
-Incorporated lessons learned from CVC project X bot (aka #6). This includes 
-updated exchange interfaces for coinbase and falconx. It also includes a simpler
-base.py file that defines the interface for the bot.py class.
+Coming soon...

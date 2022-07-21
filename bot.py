@@ -1,9 +1,13 @@
 ###############################################################################
-# PROJECT: CVC Auto-Ape Bot
+# FILENAME: run.py
+# PROJECT: EOC Limit Order Bot Template
+# CLIENT: 
 # AUTHOR: Matt Hartigan
 # DATE: 8-Apr-2022
 # FILENAME: bot.py
-# DESCRIPTION: Takes action based on user-defined indicator levels.
+# DESCRIPTION: Class for the trading bot. Applies a limit order strategy to 
+# purchase the user-defined crypto when it reaches the user-defined price
+# threshold.
 ###############################################################################
 import os
 import time
@@ -12,6 +16,7 @@ import pytz
 import requests
 import pandas as pd
 import numpy as np
+
 from exchanges.coinbase import get_all_coinbase_accounts, get_coinbase_btc_price_quote_coinbase, get_single_coinbase_account, get_single_coinbase_account_ledger, get_coinbase_fees_quote, get_coinbase_trade_fees
 from exchanges.falconx import get_falconx_btc_price_quote, get_all_falconx_accounts, get_single_falconx_account_balance, get_falconx_token_pairs, place_falconx_market_order
 from abc import ABC, abstractmethod
@@ -25,7 +30,7 @@ class Bot(BotInterface):
         for k, v in dictionary.items():
             setattr(self, k, v)
 
-    def apply_strategy(self, historical_df, finage_df) -> pd.DataFrame:
+    def apply_strategy(self, historical_df, price_df) -> pd.DataFrame:
         """ Apply the strategy logic. Returns df. """
         df = historical_df.copy()
 
@@ -55,7 +60,7 @@ class Bot(BotInterface):
                 action = 'Sell'
         
         # Append row to bot history
-        new_entry = finage_df.iloc[-1].to_list()
+        new_entry = price_df.iloc[-1].to_list()
         new_entry.append(indicator)
         new_entry.append(action)
         new_entry.append(0.0)    # coinbase price placeholder
@@ -192,6 +197,7 @@ class Bot(BotInterface):
         df = df.drop('falconx_usd_shifted', axis=1)
         return df
     
+
     def output_results(self, df, storage_client):
         """ Output bot performance / status for dashboarding and record keeping. Returns df. """
         bucket = storage_client.bucket(self.cloud_bucket_name)

@@ -1,10 +1,12 @@
 ###############################################################################
-# PROJECT: CVC Auto-Ape Bot
+# FILENAME: run.py
+# PROJECT: EOC Limit Order Bot Template
+# CLIENT: 
 # AUTHOR: Matt Hartigan
 # DATE: 8-Apr-2022
 # FILENAME: run.py
-# DESCRIPTION: Runfile that instantiates the trading bot and executes it at a 
-# user-defined frequency.
+# DESCRIPTION: Runfile that instantiates a limit-order type CEFI trading bot
+# and executes it at the user-defined frequency.
 ###############################################################################
 import os
 import time
@@ -14,6 +16,7 @@ import schedule
 import pandas as pd
 import numpy as np
 from google.cloud import storage
+
 from exchanges.coinbase import get_coinbase_connection
 from exchanges.falconx import get_falconx_connection
 from bot import Bot
@@ -22,12 +25,12 @@ from config import config_params
 
 # AUTHENTICATE 
 if config_params['in_production']:
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="credentials.json"
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=""    # FIXME: add your credentials here
 
 
 # FUNCTIONS
 def alive():
-    print('CVC Trading Bot #10 - "Auto-Ape Bot" - ' + config_params['version'] + ' is busy printing money... [' + str(datetime.datetime.utcnow()) + ']')
+    print('EOC Limit Order Bot Template (a.k.a. the "auto ape") - ' + config_params['version'] + ' is busy printing money... [' + str(datetime.datetime.utcnow()) + ']')
 
 
 def run(bot):
@@ -41,14 +44,14 @@ def run(bot):
 
     # Connect data and model file(s)
     print('Connecting data... [' + str(datetime.datetime.utcnow()) + ']')
-    finage_df = pd.read_csv('gs://chainview-capital-dashboard-bucket-official/bots/bot_6/finage_ohlc_BTCUSD_60minute_fast.csv')    # price data
-    history_df = pd.read_csv('gs://chainview-capital-dashboard-bucket-official/bots/bot_10/cvc_trading_bot10_results_log.csv')    # historical bot log file
+    price_df = pd.read_csv('')    # FIXME: add price data feed
+    history_df = pd.read_csv('')    # FIXME: add historical bot log file
 
    # Apply strategy
     print('Applying strategy... [' + str(datetime.datetime.utcnow()) + ']')
     strategy_result_df = bot.apply_strategy(
         history_df,
-        finage_df,
+        price_df,
     )
 
     # Execute trades
@@ -88,6 +91,3 @@ if config_params['in_production']:
 else:
     run(bot)
 
-
-# TODO: 
-# 

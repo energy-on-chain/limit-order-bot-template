@@ -1,9 +1,11 @@
 ###############################################################################
-# PROJECT: CVC Trading Bot
-# AUTHOR: Matt Hartigan
-# DATE: 21-Feb-2025
 # FILENAME: falconx.py
-# DESCRIPTION: This file handles interface with the CVC falconx account.
+# PROJECT: EOC Limit Order Bot Template
+# CLIENT: 
+# AUTHOR: Matt Hartigan
+# DATE: 21-Feb-2022
+# FILENAME: falconx.py
+# DESCRIPTION: This file handles interface with the FalconX API.
 ###############################################################################
 import json
 import hmac
@@ -15,16 +17,17 @@ import base64
 from google.cloud import storage
 from google.cloud import secretmanager
 from requests.auth import AuthBase
+
 from config import config_params
 
 
 # CONFIG
 client = secretmanager.SecretManagerServiceClient()    # get authentication info
-project_id = "coherent-emblem-334620"
+project_id = ''    # FIXME: add your credentials here
 
-FALCONX_API_KEY = 'CVC_FALCONX_LIGHTICEDEV_API_KEY'
-FALCONX_PASSPHRASE = 'CVC_FALCONX_LIGHTICEDEV_PASSPHRASE'
-FALCONX_SECRET = 'CVC_FALCONX_LIGHTICEDEV_API_SECRET_KEY'
+FALCONX_API_KEY = ''    # FIXME: add your value here
+FALCONX_PASSPHRASE = ''    # FIXME: add your value here
+FALCONX_SECRET = ''    # FIXME: add your value here
 falconx_api_key = client.access_secret_version({"name": f"projects/{project_id}/secrets/{FALCONX_API_KEY}/versions/latest"}).payload.data.decode('UTF-8')
 falconx_passphrase = client.access_secret_version({"name": f"projects/{project_id}/secrets/{FALCONX_PASSPHRASE}/versions/latest"}).payload.data.decode('UTF-8')
 falconx_secret= client.access_secret_version({"name": f"projects/{project_id}/secrets/{FALCONX_SECRET}/versions/latest"}).payload.data.decode('UTF-8')
