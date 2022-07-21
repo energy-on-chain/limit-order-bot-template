@@ -1,49 +1,11 @@
-###############################################################################
-# PROJECT: EOC Limit Order Bot Template
-# CLIENT: 
-# AUTHOR: Matt Hartigan
-# DATE: 8-Apr-2022
-# FILENAME: README.txt
-###############################################################################
+# Welcome to Energy On Chain's "limit-order-bot-template"!
 
-// OVERVIEW
+## [ DESCRIPTION ]
+No limit order available on your exchange? No problem. This bot was made to extend the functionality of CEFI exchanges that either don't offer an option for placing limit orders, or don't provide the desired level of customizability. You can use this bot with the exchanges that are already featured in the repo, or take it a step further and add your own. 
 
+## [ STACK ]
+- Python (key packages include pandas, numpy, schedule)
+- Google Cloud Services (for pulling and storing real-time data)
 
-// REPO ARCHITECTURE
-// exchanges/
-Contains files that handle connection, authorization, etc. on individual exchanges.
-
-// utils/
-Contains common files that are used help build and evaluate different strategies.
-
-// utils/indicators.py
-A library of common trading chart indicators for use in strategy logic.
-
-// utils/backtesting.py
-A library of common spot and derivative backtesting functions that can be used
-to quickly evaluate strategy performance and provide a common way of comparing
-them to one another.
-
-// base.py
-Base (parent) class for trading bots. Acts as an interface.
-
-// bot.py
-Child clsas for individual trading bots. Implements the base.py interface.
-
-// config.py
-Strategy and bot-specific parameters are defined here (e.g. lookback periods, 
-input file destinations, version number, etc.).
-
-// run.py
-Main runfile that defines how the bot runs (frequency, which functions, what
-order, etc.).
-
-
-###############################################################################
-# CHANGELOG
-###############################################################################
-// v0.1.0
-Initial release.
-
-// v0.2.0
-Coming soon...
+## [ BACKGROUND ]
+This project is an example of how Energy On Chain can enhance client trading performance by building / increasing the number of trading tools that they have at their disposal. If you have a similar situation where you are limited in what you want to do on CEXes (or DEXes), don't hesitate to get in touch! 
